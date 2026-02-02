@@ -1,0 +1,53 @@
+export/import:
+
+    - export default -> import sin llaves:
+
+            ej:
+
+            /archivo1.jsx
+
+            export const nombre= 'Horacio';
+
+            import nombre from ./archivo1.jsx
+
+
+    - export "común" -> import con llaves:
+
+
+            ej:
+
+            /archivo1.jsx
+
+            const nombre= 'Horacio';
+
+            export default nombre;
+
+            import { nombre } from ./archivo1.jsx
+
+
+
+JSX: es una forma de excribir en JS, ahorrando las líneas de codigo necesarias en JS Vanilla
+...(completar)
+
+
+
+
+En React las funciones se llaman así:
+    <App />
+
+    Antes en JS lo llamabamos asi:
+    App ()
+
+
+-Declaracion de un componente
+function UnComponente (){}
+
+-Uso de un componente
+<UnComponente />
+
+Reglas:
+- Todos los componentes son funciones.
+- El nombre debe comenzar con mayuscula, de otra manera la interpreta como una etiqueta y la muestra como tal.
+- Si son palabras compuestas, se debe utilizar CamelCase.
+- Todos los componentes deben tener retorno (return), despues del retorno solo se puede devolver un unico elemento.
+- <>...</> Los fragmentos nos ayudan a envolver varios elementos, como en el caso del return donde solo se puede devolver un elemento, esto nos permite ordenar la estructura sin utilizar etiquetas de mas.
