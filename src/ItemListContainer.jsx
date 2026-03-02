@@ -1,36 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { products } from "../data";
+import ItemList from "./ItemList";
 
-function Saludo (props) {
-    //estados
-    const [items, setItems] = useState(0);
-    const [nombreArticulo, setNombreArticulo] = useState ("");
+function ItemListContainer() {
+  const [items, setItems] = useState([]);
+  const { categoryId } = useParams();
 
+  useEffect(() => {
+    const getProducts = new Promise((resolve) => {
+      setTimeout(() => {
+        if (categoryId) {
+          resolve(products.filter((prod) => prod.category === categoryId));
+        } else {
+          resolve(products);
+        }
+      }, 1000);
+    });
 
+    getProducts.then((res) => setItems(res));
+  }, [categoryId]);
 
-    //funciones-acciones
-    const agregarAlCarrito = () => {
-        setItems (items + 1);
-    }
+  return (
+    <>
+      <h2>Catálogo de productos</h2>
+      <ItemList items={items} />
+    </>
+  );
+}
 
-
-
-    //vista
-    return (
-        <>
-            <div>
-                <h3>{props.greeting}</h3>
-                <h2>Este es tu carrito</h2>
-            </div>
-            <h3>🛒 Cantidad de productos en el carrito: {items}</h3>
-            <button onClick={agregarAlCarrito}>
-                Agregar al carrito
-            </button>
-
- 
- 
- 
- 
-        </>
-    );
-}   
-export default Saludo;
+export default ItemListContainer;

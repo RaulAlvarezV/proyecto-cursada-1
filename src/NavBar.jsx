@@ -1,23 +1,28 @@
-import Cart from "./CartWidget";
-function Navbar() {
+import { Link } from "react-router-dom";
+
+function NavBar() {
   return (
     <>
-    <img src="./src/assets/img/Logo Sport Zone.png" alt="" />
-    <h1>Sport Zone</h1>
-    <h2>Tienda deportiva</h2>
-    <nav>
-      <ul>
-        <li>Inicio</li>
-        <li>Productos</li>
-        <li>Envios</li>
-        <li>Quienes Somos?</li>
-        <li>Contacto</li>
-      </ul>
-        <Cart />
-    </nav>
+      <h1>Sport Zone</h1>
+
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            <Link to="/category/remeras">Remeras</Link>
+          </li>
+          <li>
+            <Link to="/category/shorts">Shorts</Link>
+          </li>
+          <li>
+            <Link to="/category/zapatillas">Zapatillas</Link>
+          </li>
+        </ul>
+      </nav>
     </>
-    
-  )
+  );
 }
 
-export default Navbar;
+export default NavBar;
