@@ -1,22 +1,22 @@
 import { useState } from "react";
 
-function ItemCount() {
-  const [count, setCount] = useState(1);
+function ItemCount({ alAgregar }) {
+  const [cantidad, setCantidad] = useState(1);
 
-  const sumar = () => setCount(count + 1);
+  const sumar = () => setCantidad(cantidad + 1);
   const restar = () => {
-    if (count > 1) {
-      setCount(count - 1);
+    if (cantidad > 1) {
+      setCantidad(cantidad - 1);
     }
   };
 
   return (
     <div>
       <button onClick={restar}>-</button>
-      <span> {count} </span>
+      <span> {cantidad} </span>
       <button onClick={sumar}>+</button>
       <br />
-      <button>Agregar al carrito</button>
+      <button onClick={() => alAgregar && alAgregar(cantidad)}>Agregar al carrito</button>
     </div>
   );
 }

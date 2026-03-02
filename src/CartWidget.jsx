@@ -1,9 +1,14 @@
-function Cart () {
+import { Link } from "react-router-dom";
+import { useCart } from "./useCart";
+
+function CartWidget() {
+  const { totalProductos } = useCart();
+
   return (
-    <div>
-      <h2>🛒</h2>
-    </div>
+    <Link to="/cart" style={{ textDecoration: "none" }}>
+      <h2>🛒 {totalProductos}</h2>
+    </Link>
   );
 }
 
-export default Cart;
+export default CartWidget;

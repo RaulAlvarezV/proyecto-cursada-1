@@ -1,6 +1,14 @@
 import ItemCount from "./ItemCount";
+import { useCart } from "./useCart";
 
 function ItemDetail({ product }) {
+  const { agregarItem } = useCart();
+
+  const alAgregar = (cantidad) => {
+    agregarItem(product, cantidad);
+    alert("Producto agregado al carrito");
+  };
+
   return (
     <div>
       <h2>{product.name}</h2>
@@ -8,7 +16,7 @@ function ItemDetail({ product }) {
       <p>Precio: ${product.price}</p>
       <img src={product.image} alt={product.name} />
 
-      <ItemCount />
+      <ItemCount alAgregar={alAgregar} />
     </div>
   );
 }

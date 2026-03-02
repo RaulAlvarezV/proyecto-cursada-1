@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo_Sport_Zone from "./assets/img/Logo-Sport-Zone.png";
+import CartWidget from "./CartWidget";
 
 function NavBar() {
   return (
@@ -20,6 +21,9 @@ function NavBar() {
           </li>
           <li>
             <Link to="/category/zapatillas">Zapatillas</Link>
+          </li>
+          <li>
+            <CartWidget />
           </li>
         </ul>
       </nav>
