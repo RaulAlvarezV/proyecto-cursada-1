@@ -1,3 +1,5 @@
+https://github.com/comisiones-coderhouse/comision-89685
+
 export/import:
 
     - export default -> import sin llaves:
@@ -51,3 +53,41 @@ Reglas:
 - Si son palabras compuestas, se debe utilizar CamelCase.
 - Todos los componentes deben tener retorno (return), despues del retorno solo se puede devolver un unico elemento.
 - <>...</> Los fragmentos nos ayudan a envolver varios elementos, como en el caso del return donde solo se puede devolver un elemento, esto nos permite ordenar la estructura sin utilizar etiquetas de mas.
+
+Hooks:
+Son funciones que le aportan algo nuevo al componente.
+Todas comienzan con la palabra "use".
+Solo se pueden mandar a llamar dentro de un componente.
+https://es.react.dev/reference/react/hooks
+Los podemos crear desde cero o instalarlos desde librerias.
+
+
+Estados del componente: State
+Es la capacidad que tiene un componente para mantener valores dentro de si mismo y refrescar la vista si alguno cambia.
+Para crear uno nuevo, se necesita el hook useState.
+
+Destructuring: "separar" un objeto en variables individuales.
+    const persona = { nombre: "Raul" , edad : 38 };
+    const nombre = persona.nombre;
+    const edad = persona.edad;
+Con Destructuring:
+    const {Prop} = nombredelobjeto
+    const {nombre, edad} = persona
+En los objetos, los props no es necesarios pasarlos en orden, pero sí se deben llamar de la misma manera que la variable dentro del objeto
+    const [pos1, pos2, pos3, etc...] = nombredelarray
+En los arrays, si hace falta que los props esten en orden.
+    
+
+OPERADOR TERNARIO:
+
+if (condicion){
+    return "x"
+}else {
+    return "y"
+}
+esto se puede reescribir como:
+condicion ? "x" : "y"
+
+La diferencia es que en if-else se puede omitir el else, en un operador ternario debe tener ambas condiciones ("x" y "y") si o si.
+Ademas en React no se puede envolver un if dentro de llaves como en el caso de evento onClick={}, el operador ternario si se lo puede envolver.
+
