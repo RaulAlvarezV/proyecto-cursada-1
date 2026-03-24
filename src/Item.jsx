@@ -17,6 +17,7 @@ function Item({ product }) {
 
       <h3>{product.name}</h3>
       <p>Precio: ${product.price}</p>
+      <p>Stock: {product.stock}</p>
 
       <Link to={`/item/${product.id}`}>
         Ver detalle

@@ -1,25 +1,51 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "./data";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import ItemList from "./ItemList";
+import { db } from "./firebaseConfig";
 
 function ItemListContainer() {
   const [items, setItems] = useState([]);
+  const [categoriaCargada, setCategoriaCargada] = useState("");
+  const [error, setError] = useState("");
   const { categoryId } = useParams();
+  const categoriaActual = categoryId || "todas";
+  const loading = categoriaCargada !== categoriaActual;
 
   useEffect(() => {
-    const getProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        if (categoryId) {
-          resolve(products.filter((prod) => prod.category === categoryId));
-        } else {
-          resolve(products);
-        }
-      }, 1000);
-    });
+    const productosRef = collection(db, "productos");
+    const consulta = categoryId
+      ? query(productosRef, where("category", "==", categoryId))
+      : productosRef;
 
-    getProducts.then((res) => setItems(res));
-  }, [categoryId]);
+    getDocs(consulta)
+      .then((res) => {
+        const productosFirestore = res.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setItems(productosFirestore);
+        setError("");
+        setCategoriaCargada(categoriaActual);
+      })
+      .catch(() => {
+        setError("No se pudieron cargar los productos");
+        setCategoriaCargada(categoriaActual);
+      });
+  }, [categoryId, categoriaActual]);
+
+  if (loading) {
+    return <h2>Cargando productos...</h2>;
+  }
+
+  if (error) {
+    return <h2>{error}</h2>;
+  }
+
+  if (items.length === 0) {
+    return <h2>No hay productos para esta categoría</h2>;
+  }
 
   return (
     <>

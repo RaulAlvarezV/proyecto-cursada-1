@@ -1,9 +1,14 @@
 import { useState } from "react";
 
-function ItemCount({ alAgregar }) {
+function ItemCount({ alAgregar, stock = 0 }) {
   const [cantidad, setCantidad] = useState(1);
 
-  const sumar = () => setCantidad(cantidad + 1);
+  const sumar = () => {
+    if (cantidad < stock) {
+      setCantidad(cantidad + 1);
+    }
+  };
+
   const restar = () => {
     if (cantidad > 1) {
       setCantidad(cantidad - 1);
@@ -17,6 +22,7 @@ function ItemCount({ alAgregar }) {
       <button onClick={sumar}>+</button>
       <br />
       <button onClick={() => alAgregar && alAgregar(cantidad)}>Agregar al carrito</button>
+      <p>Máximo por stock: {stock}</p>
     </div>
   );
 }

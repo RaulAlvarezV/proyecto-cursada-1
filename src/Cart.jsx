@@ -40,6 +40,9 @@ function Cart() {
       <button onClick={vaciarCarrito} style={{ marginRight: "10px" }}>
         Vaciar carrito
       </button>
+      <Link to="/checkout" style={{ marginRight: "10px" }}>
+        Terminar compra
+      </Link>
       <Link to="/">Seguir comprando</Link>
     </div>
   );

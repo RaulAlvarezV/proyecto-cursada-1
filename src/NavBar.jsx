@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo_Sport_Zone from "./assets/img/Logo-Sport-Zone.png";
 import CartWidget from "./CartWidget";
 
 function NavBar() {
+  const estiloLink = ({ isActive }) => ({
+    fontWeight: isActive ? "bold" : "normal",
+    textDecoration: isActive ? "underline" : "none",
+  });
+
   return (
     <>
     <img src={Logo_Sport_Zone} alt="Logo Sport Zone" style={ { width: "300px", height: "120px" }}/>
@@ -11,16 +16,16 @@ function NavBar() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Inicio</Link>
+            <NavLink to="/" style={estiloLink}>Inicio</NavLink>
           </li>
           <li>
-            <Link to="/category/remeras">Remeras</Link>
+            <NavLink to="/category/remeras" style={estiloLink}>Remeras</NavLink>
           </li>
           <li>
-            <Link to="/category/shorts">Shorts</Link>
+            <NavLink to="/category/shorts" style={estiloLink}>Shorts</NavLink>
           </li>
           <li>
-            <Link to="/category/zapatillas">Zapatillas</Link>
+            <NavLink to="/category/zapatillas" style={estiloLink}>Zapatillas</NavLink>
           </li>
           <li>
             <CartWidget />
