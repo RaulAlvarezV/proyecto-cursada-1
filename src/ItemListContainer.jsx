@@ -29,8 +29,8 @@ function ItemListContainer() {
         setError("");
         setCategoriaCargada(categoriaActual);
       })
-      .catch(() => {
-        setError("No se pudieron cargar los productos");
+      .catch((error) => {
+        setError(`No se pudieron cargar los productos: ${error.message}`);
         setCategoriaCargada(categoriaActual);
       });
   }, [categoryId, categoriaActual]);
